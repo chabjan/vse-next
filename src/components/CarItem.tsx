@@ -1,4 +1,4 @@
-import { CarWithDeps } from "@prisma/client"
+import { CarWithDeps } from "../types/prismaTypes"
 import Link from "next/link";
 
 const CarItem = ({ car }: {car: CarWithDeps}) => {

@@ -1,42 +1,23 @@
-'use client';
-import { Brand, CarModel } from "@prisma/client"
-import { useMemo, useState } from "react";
-import { createCar } from "../utils/actions";
+import { createCar } from '../utils/actions'
+import { Brand, CarModel } from '@prisma/client'
+import BrandAndModelFormFields from './BrandAndModelFormFields'
 
-const NewCarForm = ( {models, brands}: {models: CarModel[], brands: Brand[]} ) => {
-
-    const [brandId, setBrandId] = useState("");
-    const [modelId, setModelId] = useState("");
-
-    const filteredModels = useMemo(() => {
-        return models.filter((model) => model.brandId === brandId);
-    }, [models, brandId]);
-
-    return (
-        <div>
-            <h1>New Car Form</h1>
-            <form action={createCar}>
-                <select onChange={(e) => {
-                            setBrandId(e.target.value);
-                }}>
-                    {brands.map((brand) => 
-                        <option key={brand.id} value={brandId}>{brand.name}</option>
-                    )}
-                </select>
-                <select onChange={(e) => {
-                    setModelId(e.target.value);
-                }}>
-                    {filteredModels.map((model) => 
-                        <option key={model.id} value={model.id}>{model.name}</option>
-                    )}
-                </select>
-                <input type="text" placeholder="Description" />
-                <input type="number" placeholder="Year" />
-                <input type="text" placeholder="Price" />
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    )
+const NewCarForm = ({
+  models,
+  brands,
+}: {
+  models: CarModel[]
+  brands: Brand[]
+}) => {
+  return (
+    <div>
+      <form action={createCar} className="flex flex-col">
+        <BrandAndModelFormFields models={models} brands={brands} />
+        <input type="text" name="description" required={true} />
+        <button type="submit">submit</button>
+      </form>
+    </div>
+  )
 }
 
-export default NewCarForm;
+export default NewCarForm
