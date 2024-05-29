@@ -1,6 +1,26 @@
+import CarList from "../components/CarList";
+import prisma from "../utils/prisma";
 
-export default function Home() {
+const getCars = async () => {
+  const cars = await prisma.car.findMany({
+    include: {
+      brand: true,
+      model: true,
+    }
+  });
+  return cars;
+
+}
+
+const HomePage = async () => {
+  const cars = await getCars();
+
   return (
-    <div>Home Page</div>
+    <div>
+      Home Page
+      <CarList cars={cars} />
+    </div>
   );
 }
+
+export default HomePage;
