@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import prisma from "../utils/prisma";
+import { randomInt } from "crypto";
 
 
 export const createCar = async (formData: FormData) => {
@@ -20,6 +21,16 @@ export const createCar = async (formData: FormData) => {
             description: description,
         },
     })
+
+    redirect("/");
+};
+
+export const deleteCar = async (id: string) => {
+    await prisma.car.delete({
+        where: {
+            id: id,
+        },
+    });
 
     redirect("/");
 };
@@ -67,4 +78,22 @@ export const findCars = async (query: string) => {
         });
 
     return cars;
+}
+
+export const quickAddTestCar = async () => {
+    const models = await prisma.carModel.findMany();
+    const model = models[randomInt(models.length)];
+
+    await prisma.car.create({
+        data: {
+            modelId: model.id,
+            brandId: model.brandId,
+            description: "Quick random test car",
+            year: randomInt(23) + 2000,
+            color: "test color",
+            price: randomInt(1000000) + 10000,
+        },
+    });
+
+    redirect("/");
 }
