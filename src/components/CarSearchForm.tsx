@@ -1,39 +1,37 @@
+"use client";
 import React, { useState } from 'react';
-import BrandAndModelFormFields from './BrandAndModelFormFields';
-import prisma from '../utils/prisma';
+import { useRouter } from 'next/navigation';
+import router from 'next/router';
+import { redirectSearchParams } from '../utils/actions';
 
-const fetchBrands = async () => {
-    const brands = await prisma.brand.findMany();
-    return brands;
-}
+const CarSearchForm = () => {
+const [query, setQuery] = useState('');
 
-const fetchCarModels = async () => {
-    const models = await prisma.carModel.findMany();
-    return models;
-}
+const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    redirectSearchParams(query);
+    setQuery('');
+};
 
-const CarSearchForm = async () => {
-    const brands = await fetchBrands();
-    const models = await fetchCarModels();
-    const [searchQuery, setSearchQuery] = useState('');
-
-    const handleSearch = (e: React.FormEvent) => {
-        e.preventDefault();
-        // Perform search logic here
-    };
-
-    return (
-        <form onSubmit={handleSearch}>
-            <BrandAndModelFormFields models={models} brands={brands} />
+  return (
+    
+    <form onSubmit={handleSearch} className='block p-3 bg-white border border-gray-200 rounded-lg shadow mb-4'>
+        <div>
+            <label htmlFor="search" className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
+                Search:
+            </label>
             <input
+                id="search"
                 type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
                 placeholder="Enter search query"
+                className='mb-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
             />
-            <button type="submit">Search</button>
-        </form>
-    );
+            <button type="submit" className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'>Search</button>
+        </div>
+    </form>
+  );
 };
 
 export default CarSearchForm;

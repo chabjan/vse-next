@@ -22,4 +22,49 @@ export const createCar = async (formData: FormData) => {
     })
 
     redirect("/");
+};
+
+export const redirectSearchParams = async (query: string | null) => {
+        const search = query?.trim();
+    
+        if (search) {
+            redirect(`/?query=${search}`);
+        } else {
+            redirect("/");
+        }
+};
+
+export const findCars = async (query: string) => {
+
+    const cars = await prisma.car.findMany({
+        where: {
+            OR: [
+              {
+                brand: {
+                  name: {
+                    contains: query,
+                  },
+                },
+              },
+              {
+                model: {
+                  name: {
+                    contains: query,
+                  },
+                },
+              },
+              {
+                description: {
+                  contains: query,
+                },
+              },
+            ],
+          },
+          include: {
+            brand: true,
+            model: true,
+          },
+        });
+
+    return cars;
 }
