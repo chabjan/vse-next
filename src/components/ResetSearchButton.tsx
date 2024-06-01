@@ -1,6 +1,7 @@
 "use client";
 import { resetHomePage } from "../utils/actions";
 
+
 const ResetSearchButton = () => {
     const resetSearchClick = () => {
         resetHomePage();
@@ -13,5 +14,3 @@ const ResetSearchButton = () => {
 }
 
 export default ResetSearchButton;
-
-

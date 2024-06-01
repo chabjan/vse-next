@@ -1,5 +1,4 @@
 "use client"
-import { useState, useEffect } from 'react';
 import { CarWithDeps } from '../types/prismaTypes';
 import CarItem from './CarItem';
 

@@ -1,13 +1,10 @@
 "use client";
 
-import { redirect } from "next/navigation";
 import { deleteCar } from "../utils/actions";
 import { Button } from "primereact/button";
-import { ConfirmDialog, ConfirmDialogPassThroughOptions, confirmDialog } from "primereact/confirmdialog";
-import { Toast } from "primereact/toast";
-import { useRef, useState } from "react";
-import { rejects } from "assert";
-import { PassThroughOptions } from "primereact/passthrough";
+import { ConfirmDialog } from "primereact/confirmdialog";
+import { useState } from "react";
+
 
 interface DeleteButtonProps {
   carId: string;

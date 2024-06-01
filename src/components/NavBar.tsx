@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
-import {Ripple} from 'primereact/ripple';
+
 
 const Navbar = () => {
     const [nav, setNav] = useState(false);

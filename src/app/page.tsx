@@ -1,10 +1,8 @@
-import { Suspense } from "react";
 import CarList from "../components/CarList";
 import CarSearchForm from "../components/CarSearchForm";
-import { findCars, quickAddTestCar } from "../utils/actions";
+import { findCars } from "../utils/actions";
 import Link from "next/link";
 import AddRandomCarButton from "../components/AddRandomCarButton";
-import { Button } from "primereact/button";
 import ResetSearchButton from "../components/ResetSearchButton";
 
 const HomePage = async ({

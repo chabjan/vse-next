@@ -1,7 +1,6 @@
-import Link from "next/link";
 import prisma from "@/src/utils/prisma";
 import CarDeleteButton from "@/src/components/CarDeleteButton";
-import { Button } from 'primereact/button';
+
 
 const fetchCarDetails = async (id: string) => {
     const car = await prisma.car.findUnique({

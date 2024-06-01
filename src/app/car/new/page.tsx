@@ -1,6 +1,5 @@
 import NewCarForm from "@/src/components/NewCarForm";
 import prisma from "@/src/utils/prisma";
-import { CarModel } from "@prisma/client";
 
 
 const fetchBrands = async () => {

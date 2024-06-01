@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { redirectSearchParams } from '../utils/actions';
 
+
 const CarSearchForm = () => {
 const [query, setQuery] = useState('');
 
