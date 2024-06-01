@@ -1,7 +1,5 @@
 "use client";
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import router from 'next/router';
 import { redirectSearchParams } from '../utils/actions';
 
 const CarSearchForm = () => {
@@ -15,7 +13,7 @@ const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
 
   return (
     
-    <form onSubmit={handleSearch} className='block p-3 bg-white border border-gray-200 rounded-lg shadow mb-4'>
+    <form onSubmit={handleSearch} className='block p-3 bg-white border border-gray-200 rounded-lg shadow-inner mb-4'>
         <div>
             <label htmlFor="search" className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
                 Search:

@@ -19,10 +19,12 @@ const NewCarPage = async () => {
     const models = await fetchCarModels();
 
     return (
-        <div>
-            <h1>New Car Page</h1>
+        <>
+            <div className="py-4 flex flex-column md:flex-row md:align-items-center md:justify-content-between">
+                <div className="text-3xl font-medium text-900">New Car</div>
+            </div>
             <NewCarForm brands={brands} models={models}/>
-        </div>
+        </>
     );
 }
 
