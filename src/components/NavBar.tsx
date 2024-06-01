@@ -22,7 +22,7 @@ const Navbar = () => {
             {links.map((link) => (
                 <li key={link.id}>
                     <Link href={link.link} className="p-ripple flex px-6 py-2 align-items-center text-600 hover:text-900 hover:surface-100 font-medium border-round cursor-pointer transition-colors transition-duration-150 w-full">
-                        <i className="pi pi-home mr-2"></i>
+                        <i className="pi pi-car mr-2"></i>
                         <span>{link.label}</span>
                     </Link>
                 </li>
