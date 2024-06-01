@@ -4,6 +4,10 @@ import { redirect } from "next/navigation";
 import prisma from "../utils/prisma";
 import { randomInt } from "crypto";
 
+export const resetHomePage = () => {
+  redirect("/");
+};
+
 
 export const createCar = async (formData: FormData) => {
     const modelId = formData.get("modelId")?.toString();

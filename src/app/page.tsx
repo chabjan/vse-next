@@ -4,6 +4,8 @@ import CarSearchForm from "../components/CarSearchForm";
 import { findCars, quickAddTestCar } from "../utils/actions";
 import Link from "next/link";
 import AddRandomCarButton from "../components/AddRandomCarButton";
+import { Button } from "primereact/button";
+import ResetSearchButton from "../components/ResetSearchButton";
 
 const HomePage = async ({
         searchParams
@@ -26,7 +28,12 @@ const HomePage = async ({
                 </Link>
              </div>
             <CarSearchForm />
-            {searchParams.query && (<div className="font-italic my-4">Search results for: {searchParams.query}</div>)}
+            {searchParams.query && (
+                <div className="p-1 flex flex-row align-items-center">
+                    <div className="font-italic me-6">Search results for: {searchParams.query}</div>
+                    <ResetSearchButton />
+                </div>
+            )}
             <CarList cars={cars} />
             <AddRandomCarButton />
         </>
