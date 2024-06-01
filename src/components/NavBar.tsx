@@ -16,7 +16,7 @@ const Navbar = () => {
 
     return (
         
-<div className="surface-overlay py-3 px-8 shadow-2 flex align-items-center justify-content-between relative" style={{ minHeight: '80px' }}>
+<div className="surface-overlay py-3 px-8 shadow-2 flex align-items-center justify-content-between sticky w-full top-0" style={{ minHeight: '80px' }}>
     <div className="align-items-center justify-content-between surface-overlay left-0 top-100 z-1 shadow-2 flex flex-row">
         <ul className="list-none p-0 m-0 flex align-items-center select-none flex-row">
             {links.map((link) => (

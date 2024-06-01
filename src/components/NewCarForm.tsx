@@ -86,7 +86,7 @@ const NewCarForm = ({
         <form action={createCar} className="block p-3 bg-white border border-gray-200 rounded-lg shadow-inner mb-4">
             <BrandAndModelFormFields models={models} brands={brands} onChange={handleInputChange}/>
 
-            <div>
+            <div className='mb-4'>
                 <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
                 <input
                 type='text'
@@ -99,7 +99,7 @@ const NewCarForm = ({
                 />
             </div>
 
-            <div>
+            <div className='mb-4'>
                 <label htmlFor="price" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
                 <input
                 type='number'
@@ -113,7 +113,7 @@ const NewCarForm = ({
                 {priceErrorVisible && <div className="text-red-500 text-sm my-2">Price must be greater than 0</div>}
             </div>
 
-            <div>
+            <div className='mb-4'>
                 <label htmlFor="color" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Color</label>
                 <input
                 type='text'
@@ -126,7 +126,7 @@ const NewCarForm = ({
                 />
             </div>
 
-            <div>
+            <div className='mb-4'>
                 <label htmlFor="year" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year</label>
                 <input
                 type='number'
@@ -140,7 +140,7 @@ const NewCarForm = ({
                 {yearErrorVisible ? <div className="text-red-500 text-sm my-2 h-6">Year must be between 1970 and 2024</div> : <div className="text-red-500 text-sm my-2 h-6"></div> }
             </div>
 
-            <button type="submit" disabled={!isFormValid} className={isFormValid ? 'text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' : 'text-black  bg-gray-200 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center'}>
+            <button type="submit" title={isFormValid ? '' : 'Button is disabled until you enter all required parameters.'} disabled={!isFormValid} className={isFormValid ? 'text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' : 'text-black  bg-gray-200 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center'}>
                 Add Car
             </button>
         </form>
