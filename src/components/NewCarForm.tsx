@@ -48,19 +48,15 @@ const NewCarForm = ({
     }, [formData, yearErrorVisible, priceErrorVisible]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        console.log('form change')
         const { name, value } = e.target;
         if (name === 'brandId') {
-            console.log('brand change - change model to empty')
             setFormData(prevState => ({ ...prevState, "modelId": '' }));
         }
         setFormData(prevState => ({ ...prevState, [name]: value }));
-        console.log(e.target.name, e.target.value);
     };
 
     const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const price = parseInt(e.target.value, 10);
-        console.log('price: ', price);
         if ( price < 0 ) {
             document.getElementById('price')?.classList.add('border-red-500');
             setPriceErrorVisible(true);

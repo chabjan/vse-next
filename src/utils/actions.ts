@@ -13,20 +13,36 @@ export const createCar = async (formData: FormData) => {
     const modelId = formData.get("modelId")?.toString();
     const brandId = formData.get("brandId")?.toString();
     const description = formData.get("description")?.toString();
+    const color = formData.get("color")?.toString();
+    const year = formData.get("year")?.toString();
+    const price = formData.get("price")?.toString();
 
-    if (!modelId || !brandId || !description) {
+    
+
+    try {
+      if (!modelId || !brandId || !description || !color || !year || !price) {
         throw new Error("All fields are required");
+      }
+
+      await prisma.car.create({
+        data: {
+          modelId: modelId,
+          brandId: brandId,
+          description: description,
+          color: color,
+          year: year ? parseInt(year) : undefined,
+          price: price ? parseInt(price) : undefined,
+        },
+        
+      })
+      
+      redirect("/");
+
+    } catch (error) {
+      console.error(error);
+      throw new Error("Error creating car");
     }
 
-    await prisma.car.create({
-        data: {
-            modelId: modelId,
-            brandId: brandId,
-            description: description,
-        },
-    })
-
-    redirect("/");
 };
 
 export const deleteCar = async (id: string) => {
